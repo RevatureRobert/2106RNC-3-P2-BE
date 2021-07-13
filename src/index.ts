@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 // import "./pre-start"; // Must be the first import
 // import http from "http";
 // import https from "https";
@@ -28,15 +30,20 @@ import morgan from "morgan";
 import path from "path";
 import helmet from "helmet";
 import serverless from "serverless-http";
+import express from "serverless-express/express";
 
-import express, {NextFunction, Request, Response} from "express";
+// @ts-ignore
+import express, {NextFunction, Request, Response} from "@vendia/serverless-express";
+import handler from "serverless-express/handler"
+// import actualExpress from "express";
 import StatusCodes from "http-status-codes";
 import "express-async-errors";
 
 import BaseRouter from "./routes";
 import logger from "@shared/Logger";
+// const express = serverlessExpress as actualExpress.Express;
 
-const app = express();
+const app = express() //as express1.Application;
 const {BAD_REQUEST} = StatusCodes;
 
 /************************************************************************************
@@ -82,5 +89,5 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 // });
 
 // Export express instance
-// export default app;
-module.exports.handler = serverless(app);
+export default app;
+// module.exports.handler = serverless(app);
