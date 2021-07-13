@@ -1,8 +1,9 @@
 component: express@1.0.8 # (required) name of the component. In that case, it's express.
 name: express-api # (required) name of your express component instance.
 stage: prod # (optional) serverless dashboard stage. default is dev.
-plugins:
-  - serverless-express # <- like so
+# plugins:
+#   - serverless-thingy # <- fake name
+#   - serverless-express # <- like so
 functions:
     userGet:
         handler: index.handler
