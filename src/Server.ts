@@ -2,6 +2,7 @@ import cookieParser from "cookie-parser";
 import morgan from "morgan";
 import path from "path";
 import helmet from "helmet";
+import serverless from "serverless-http";
 
 import express, {NextFunction, Request, Response} from "express";
 import StatusCodes from "http-status-codes";
@@ -56,4 +57,5 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 // });
 
 // Export express instance
-export default app;
+// export default app;
+exports.handler = serverless(app);

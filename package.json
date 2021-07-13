@@ -62,7 +62,10 @@
         "build.ts"
     ],
     "lint-staged": {
-        "**/*": "prettier --write --ignore-unknown"
+        "*.{js,jsx,ts,tsx}": [
+            "eslint --fix",
+            "prettier --write --ignore-unknown"
+        ]
     },
     "prettier": {
         "trailingComma": "none",
@@ -82,7 +85,8 @@
         "jet-logger": "^1.0.6",
         "jsonfile": "^6.1.0",
         "module-alias": "^2.2.2",
-        "morgan": "^1.10.0"
+        "morgan": "^1.10.0",
+        "serverless-http": "^2.7.0"
     },
     "devDependencies": {
         "@babel/preset-typescript": "^7.14.5",
