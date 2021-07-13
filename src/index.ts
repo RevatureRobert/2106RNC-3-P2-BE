@@ -29,11 +29,9 @@ import cookieParser from "cookie-parser";
 import morgan from "morgan";
 import path from "path";
 import helmet from "helmet";
-import serverless from "serverless-http";
-import express from "serverless-express/express";
-
 // @ts-ignore
 import express, {NextFunction, Request, Response} from "@vendia/serverless-express";
+// @ts-ignore
 import handler from "serverless-express/handler"
 // import actualExpress from "express";
 import StatusCodes from "http-status-codes";
