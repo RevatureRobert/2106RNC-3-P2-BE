@@ -1,6 +1,11 @@
 component: express@1.0.8 # (required) name of the component. In that case, it's express.
 name: express-api # (required) name of your express component instance.
 stage: prod # (optional) serverless dashboard stage. default is dev.
+service: SJWBackend
+provider:
+  name: aws
+  stage: prod
+  region: us-east-1
 plugins:
   - serverless-express # <- like so
 functions:
