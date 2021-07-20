@@ -5,7 +5,7 @@ import serverlessHandler from "serverless-express/handler"
 import StatusCodes from "http-status-codes";
 import "express-async-errors";
 import BaseRouter from "./routes";
-import logger from "@shared/Logger";
+import logger from "./shared/Logger";
 
 process.env.SERVERLESS_EXPRESS_PLATFORM = "aws";
 export const app = express();
