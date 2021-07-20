@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable max-len */
-import { IMessage } from "@entities/Messages";
+import { IMessage } from "../../entities/Messages";
 import AWS from "aws-sdk";
 import logger from "../../shared/Logger";
 import deleteInBatch from "../Shared/dynamodb_batch_delete";
