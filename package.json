@@ -94,7 +94,8 @@
         "module-alias": "^2.2.2",
         "morgan": "^1.10.0",
         "serverless": "^2.52.0",
-        "serverless-express": "^2.0.11"
+        "serverless-express": "^2.0.11",
+        "bcrypt": "^5.0.1"
     },
     "devDependencies": {
         "@babel/preset-typescript": "^7.14.5",
@@ -122,7 +123,6 @@
         "aws-sdk": "^2.949.0",
         "axios": "^0.21.1",
         "babel-jest": "^27.0.2",
-        "bcrypt": "^5.0.1",
         "dotenv": "^10.0.0",
         "eslint": "^7.28.0",
         "eslint-config-google": "^0.14.0",
