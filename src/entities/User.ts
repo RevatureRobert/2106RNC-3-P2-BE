@@ -1,5 +1,3 @@
-import bcrypt from "bcrypt";
-
 export interface IUser {
   userName: string; // this is their email address
   firstName: string;
