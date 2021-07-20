@@ -8,7 +8,7 @@ import BaseRouter from "./routes";
 import logger from "@shared/Logger";
 
 process.env.SERVERLESS_EXPRESS_PLATFORM = "aws";
-const app = express();
+export const app = express();
 const {BAD_REQUEST} = StatusCodes;
 
 /************************************************************************************
