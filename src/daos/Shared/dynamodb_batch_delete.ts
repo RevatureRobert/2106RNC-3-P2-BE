@@ -7,30 +7,7 @@ import logger from "../../shared/Logger";
 //  If any table takes on a different primary key, a new function like getSortKey will have to be added, and code will need updating for the new primary key(s)
 const PRIMARY_KEY = "username";
 
-let config;
-let dynamoClient: any;
-
-if (process.env.NODE_ENV === "test") {
-  config = {
-    convertEmptyValues: true,
-    ...(process.env.MOCK_DYNAMODB_ENDPOINT && {
-      endpoint: process.env.MOCK_DYNAMODB_ENDPOINT,
-      sslEnabled: false,
-      region: "local",
-    }),
-  };
-  // create an instance of AWS
-  dynamoClient = new AWS.DynamoDB.DocumentClient(config);
-} else {
-  // Access details stored in env foler under prestart
-  AWS.config.update({
-    region: process.env.AWS_DEFAULT_REGION,
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  });
-  // create an instance of AWS
-  dynamoClient = new AWS.DynamoDB.DocumentClient();
-}
+const dynamoClient = new AWS.DynamoDB.DocumentClient();
 
 // Procures the sort key based on the input tablename. Added for simplicity's sake; must be updated if tables are modified
 function getSortKey(tableName: string) {
