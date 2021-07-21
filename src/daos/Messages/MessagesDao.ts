@@ -7,30 +7,7 @@ import logger from "../../shared/Logger";
 import deleteInBatch from "../Shared/dynamodb_batch_delete";
 import { createHash } from "../../shared/functions";
 
-let config;
-let dynamoClient: any;
-
-if (process.env.NODE_ENV === "test") {
-  config = {
-    convertEmptyValues: true,
-    ...(process.env.MOCK_DYNAMODB_ENDPOINT && {
-      endpoint: process.env.MOCK_DYNAMODB_ENDPOINT,
-      sslEnabled: false,
-      region: "local",
-    }),
-  };
-  // create an instance of AWS
-  dynamoClient = new AWS.DynamoDB.DocumentClient(config);
-} else {
-  // Access details stored in env foler under prestart
-  AWS.config.update({
-    region: process.env.AWS_DEFAULT_REGION,
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  });
-  // create an instance of AWS
-  dynamoClient = new AWS.DynamoDB.DocumentClient();
-}
+const dynamoClient = new AWS.DynamoDB.DocumentClient();
 
 /**
  * identify the name of the table we are using
