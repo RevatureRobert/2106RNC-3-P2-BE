@@ -93,8 +93,20 @@ class SocialPostDao implements IPostDao {
    */
   public getAll(): Promise<IPost[]> {
     logger.info("Using route getAll in DAO");
+    const stamp = Number(Date.now());
     const params = {
       TableName: TABLE_NAME,
+      IndexName: "main_post-post_date_time-index",
+      KeyConditionExpression: "#mainpost = :mainpost AND #date < :date",
+      ExpressionAttributeNames: {
+        "#mainpost": "main_post",
+        "#date": "sort_date_time"
+      },
+      ExpressionAttributeValues: {
+        ":mainpost": 1,
+        ":date": stamp
+      },
+      ScanIndexForward: false
     };
     const db = dynamoClient.scan(params).promise();
     return db.then();
@@ -113,14 +125,15 @@ class SocialPostDao implements IPostDao {
   public async addMainPost(postInfo: IPost): Promise<void> {
     logger.info("Using route addMainPost in DAO");
     const id = await createHash(postInfo.userName + String(Date.now()));
-    const stamp = String(Date.now());
+    const stamp = Number(Date.now());
     const params = {
       TableName: TABLE_NAME,
       Item: {
         username: postInfo.userName,
         post_id: id,
         parent_post_id: id,
-        post_date_time: stamp,
+        post_date_time: Date().toString(),
+        sort_date_time: stamp,
         post_text: postInfo.postText,
         main_post: 1,
       },
@@ -137,13 +150,15 @@ class SocialPostDao implements IPostDao {
   public async addComment(postInfo: IPost): Promise<void> {
     logger.info("Using route addComment in DAO");
     const id = await createHash(postInfo.userName + String(Date.now()));
+    const stamp = Number(Date.now());
     const params = {
       TableName: TABLE_NAME,
       Item: {
         username: postInfo.userName,
         post_id: id,
         parent_post_id: postInfo.parentPostId,
-        post_date_time: String(Date.now()),
+        post_date_time: Date().toString(),
+        sort_date_time: stamp,
         post_text: postInfo.postText,
         main_post: 0,
       },
@@ -169,13 +184,15 @@ class SocialPostDao implements IPostDao {
     } else {
       mp = 0;
     }
+    const stamp = Number(Date.now());
     const params = {
       TableName: TABLE_NAME,
       Item: {
         username: postInfo.userName,
         post_id: postInfo.postId,
         parent_post_id: postInfo.parentPostId,
-        post_date_time: String(Date.now()),
+        post_date_time: Date().toString(),
+        sort_date_time: stamp,
         post_text: postInfo.postText,
         main_post: mp,
       },
@@ -203,6 +220,7 @@ class SocialPostDao implements IPostDao {
       likeVibe = false;
       dislikeVibe = false;
     }
+    const stamp = Number(Date.now());
     const id = await createHash(postInfo.userName + String(Date.now()));
     const params = {
       TableName: TABLE_NAME,
@@ -210,7 +228,8 @@ class SocialPostDao implements IPostDao {
         username: postInfo.userName,
         post_id: id,
         parent_post_id: postInfo.parentPostId,
-        post_date_time: String(Date.now()),
+        post_date_time: Date().toString(),
+        sort_date_time: stamp,
         main_post: 0,
         like: likeVibe,
         dislikes: dislikeVibe,
