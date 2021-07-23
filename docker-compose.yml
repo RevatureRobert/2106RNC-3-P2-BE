@@ -1,0 +1,25 @@
+version: '2.4'
+
+# docker-compose build: builds the container
+# docker-compose up: spins up the container
+# docker-compose up -d: spins up the container in detached mode (background)
+# docker-compose down --remove-orphans: brings down the container and cleans up abandoned containers
+
+services:
+  react_native_app:
+    container_name: aws_serverless_back_end
+    build:
+      context: .
+    tty: true
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./:/app:delegated
+      - ./package.json:/app/package.json
+      - ./package-lock.json:/app/package-lock.json
+      - notused:/app/node_modules
+    healthcheck:
+      disable: true
+
+volumes:
+  notused:
