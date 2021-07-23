@@ -1,3 +1,5 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=RevatureRobert_2106RNC-3-P2-BE&metric=alert_status)](https://sonarcloud.io/dashboard?id=RevatureRobert_2106RNC-3-P2-BE)
+
 # 2106RNC-3-P2-BE
 
 ## Project 2
