@@ -1,4 +1,4 @@
-import logger from "./Logger";
+import logger from './Logger';
 import bcrypt from "bcrypt";
 
 export const pErr = (err: Error) => {
@@ -18,4 +18,4 @@ export async function createHash(x: string) {
     const hash = await bcrypt.hash(password, saltRounds);
     logger.info("Finished hashing function");
     return String(hash);
-}
+  }

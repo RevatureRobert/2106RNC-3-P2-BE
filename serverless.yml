@@ -1,28 +1,26 @@
-component: express@1.0.8 # (required) name of the component. In that case, it's express.
-name: express-api # (required) name of your express component instance.
-stage: prod # (optional) serverless dashboard stage. default is dev.
-service: SJWBackend
+service: SocialJusticeWarriorsBackend
+
 provider:
-  name: aws
-  stage: prod
-  region: us-east-1
-plugins:
-  - serverless-express # <- like so
+    name: aws
+    runtime: nodejs14.x
+    region: us-east-1
+    endpointType: REGIONAL
+
 functions:
-    userGet:
-        handler: index.handler
+    main:
+        handler: src/index.handler
         events:
             - http: ANY /
             - http: "ANY {proxy+}"
+
+plugins:
+    - serverless-plugin-typescript
+    - serverless-express
+
 inputs:
     src:
-        src: ./src # (optional) path to the source folder. default is a hello world app.
+        src: ./src
         hook: npm run build
         dist: ./dist
-    # memory: 512                    # (optional) lambda memory size.
-    # timeout: 10                    # (optional) lambda timeout.
-    description: social justice warriors backend # (optional) lambda & api gateway description.
-    env: # (optional) env vars.
-        DEBUG: "express:*" #            this express specific env var will print express debug logs.
-    domain: thesocialjusticewarriors.com # (optional) if the domain was registered via AWS Route53 on the account you are deploying to, it will automatically be set-up with your Express app's API Gateway, as well as a free AWS ACM SSL Cert.
-    region: us-east-1 # (optional) aws region to deploy to. default is us-east-1.
+    domain: thesocialjusticewarriors.com
+    region: us-east-1

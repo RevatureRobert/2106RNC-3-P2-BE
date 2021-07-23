@@ -1,12 +1,14 @@
 import StatusCodes from "http-status-codes";
-import {Request, Response} from "express";
-
+import { Request, Response } from "express";
 import UserDao from "../daos/User/UserDao";
-import {paramMissingError} from "@shared/constants";
-import User from "../entities/User";
+import { paramMissingError } from "../shared/constants";
 
 const userDao = new UserDao();
-const {BAD_REQUEST, CREATED, OK} = StatusCodes;
+const { BAD_REQUEST, CREATED, OK } = StatusCodes;
+
+//************************************************************************************************
+//* Get Operators
+//************************************************************************************************
 
 /**
  * Get all users.
@@ -16,9 +18,32 @@ const {BAD_REQUEST, CREATED, OK} = StatusCodes;
  * @returns
  */
 export async function getAllUsers(req: Request, res: Response) {
-    const users = await userDao.getAll();
-    return res.status(OK).json({users});
+  const users = await userDao.getAll();
+  return res.status(OK).json({ users });
 }
+
+/**
+ * Get one user by the username.
+ *
+ * @param req
+ * @param res
+ * @returns
+ */
+ export async function getOneUser(req: Request, res: Response) {
+  const { user } = req.body;
+  if (!user) {
+    return res.status(BAD_REQUEST).json({
+      error: paramMissingError,
+    });
+  } else {
+    const userData = await userDao.getOne(user);
+    return res.status(OK).json(userData);
+  }
+}
+
+//************************************************************************************************
+//* Post Operators
+//************************************************************************************************
 
 /**
  * Add one user.
@@ -28,25 +53,20 @@ export async function getAllUsers(req: Request, res: Response) {
  * @returns
  */
 export async function addOneUser(req: Request, res: Response) {
-    const {username, first_name, last_name, phone_number, publicName} =
-        req.params;
-
-    const user = new User(
-        username,
-        first_name,
-        last_name,
-        phone_number,
-        publicName
-    );
-
-    if (!user) {
-        return res.status(BAD_REQUEST).json({
-            error: paramMissingError
-        });
-    }
-    await userDao.add(user);
+  const { user } = req.body;
+  if (!user) {
+    return res.status(BAD_REQUEST).json({
+      error: paramMissingError,
+    });
+  } else {
+    await userDao.addUser(user);
     return res.status(CREATED).end();
+  }
 }
+
+//************************************************************************************************
+//* Put Operators
+//************************************************************************************************
 
 /**
  * Update one user.
@@ -56,26 +76,19 @@ export async function addOneUser(req: Request, res: Response) {
  * @returns
  */
 export async function updateOneUser(req: Request, res: Response) {
-    const {username, first_name, last_name, phone_number, publicName} =
-        req.params;
-
-    const user = new User(
-        username,
-        first_name,
-        last_name,
-        phone_number,
-        publicName
-    );
-
-    if (!user) {
-        return res.status(BAD_REQUEST).json({
-            error: paramMissingError
-        });
-    }
-
-    await userDao.update(user);
-    return res.status(OK).end();
+  const { user } = req.body;
+  if (!user) {
+    return res.status(BAD_REQUEST).json({
+      error: paramMissingError,
+    });
+  }
+  const userData = await userDao.updateUser(user);
+  return res.status(OK).json({ userData });
 }
+
+//************************************************************************************************
+//* Delete Operators
+//************************************************************************************************
 
 /**
  * Delete one user.
@@ -85,7 +98,13 @@ export async function updateOneUser(req: Request, res: Response) {
  * @returns
  */
 export async function deleteOneUser(req: Request, res: Response) {
-    const {username} = req.params;
-    await userDao.delete(username);
+  const { user } = req.body;
+  if (!user) {
+    return res.status(BAD_REQUEST).json({
+      error: paramMissingError,
+    });
+  } else {
+    await userDao.deleteUser(user);
     return res.status(OK).end();
+  }
 }

@@ -1,39 +1,53 @@
-let tableName = "Test-Messages";
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable max-len */
+import "../../pre-start/testenviroment";
+import { msgObj1 } from "../../pre-start/testObjects";
+import MessagesDao from "./MessagesDao";
+
+//configure basic jest settings
+const DEFAULT_JEST_TIMEOUT = 1000; //milliseconds
+jest.setTimeout(1 * DEFAULT_JEST_TIMEOUT);
+
+// create instance of social post dao
+const dao = new MessagesDao();
+
+//************************************************************************************************
+//* tests start here
+//************************************************************************************************
+
 /**
  * resource used:
  * https://jestjs.io/docs/dynamodb
  */
-it("Should insert one item into table", async () => {
-    await ddb
-        .put({
-            TableName: tableName,
-            Item: {
-                username: "Testy",
-                message_id: "1",
-                parent_id: "0"
-            }
-        })
-        .promise();
 
-    const {Item} = await ddb
-        .get({TableName: tableName, Key: {username: "Testy"}})
-        .promise();
+describe("[MESSAGES_DAO]", () => {
+  it("[Test 1.0] - addMainMessage and getGroups", async () => {
+    await dao.addMainMessage(msgObj1);
+    expect(await dao.getGroups(msgObj1)).toBeDefined();
+  });
 
-    return expect(Item).toEqual({
-        username: "Testy",
-        message_id: "1",
-        parent_id: "0"
-    });
-});
+  it("[Test 2.0] - addSubMessage and getMessage", async () => {
+    await dao.addSubMessage(msgObj1);
+    expect(await dao.getMessages(msgObj1)).toBeDefined();
+  });
 
-it("Should delete one item from table", async () => {
-    await ddb
-        .delete({TableName: tableName, Key: {username: "Testy"}})
-        .promise();
+  it("[Test 3.0] - getAll messages", async () => {
+    expect(await dao.getAll()).toBeDefined();
+  });
 
-    const {Item} = await ddb
-        .get({TableName: tableName, Key: {username: "Testy"}})
-        .promise();
+  it("[Test 4.0] - updateMessage and getMessages", async () => {
+    await dao.updateMessage(msgObj1);
+    expect(await dao.getMessages(msgObj1)).toBeDefined();
+  });
 
-    return expect(Item).withContext;
+  it("[Test 5.0] - deleteMessage and getMessages", async () => {
+    await dao.deleteMessage(msgObj1);
+    expect(await dao.getMessages(msgObj1)).toBeDefined();
+  });
+
+  it("[Test 6.0] - deleteMessageGroup and getMessages", async () => {
+    await dao.deleteMessageGroup(msgObj1);
+    expect(await dao.getMessages(msgObj1)).toBeDefined();
+  });
 });
