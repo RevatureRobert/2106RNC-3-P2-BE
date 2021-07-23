@@ -18,6 +18,7 @@ Rewrite your Project 1 using the following technologies:
 4. AWS Amplify/SAM/CFN/Serverless-FW as backend build tool
 5. Expo as React Native build tool
 
+- [API Documentation](https://documenter.getpostman.com/view/16168422/TzsYM8oz)
 ### Requirements
 
 ---
