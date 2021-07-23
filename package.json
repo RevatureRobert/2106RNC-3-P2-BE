@@ -5,6 +5,7 @@
         "prepare": "husky install",
         "build": "ts-node build.ts",
         "deploy": "ts-node ./deploy.ts",
+        "deploy:aws": "npx serverless deploy -s dev",
         "lint": "eslint . --ext .ts",
         "start": "node -r module-alias/register ./dist --env=production",
         "start:dev": "nodemon",

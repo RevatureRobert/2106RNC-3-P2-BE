@@ -18,13 +18,14 @@ Rewrite your Project 1 using the following technologies:
 4. AWS Amplify/SAM/CFN/Serverless-FW as backend build tool
 5. Expo as React Native build tool
 
+- [API Documentation](https://documenter.getpostman.com/view/16168422/TzsYM8oz)
 ### Requirements
 
 ---
 
 **Backend**
 
-1. Application must be serverless, implementing AWS Services.
+1. Application must be serverless, implementing AWS Services. 
 2. All code must be written in Typescript
 3. Work must be done with an Agile/Scrum workflow. Implement burn down charts, assign a Scrum Master, hold daily stand ups, and work in 1 week sprints.
 4. 100% Code coverage on Lambda functions.
