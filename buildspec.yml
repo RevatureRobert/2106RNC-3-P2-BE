@@ -7,7 +7,7 @@ env:
 phases:
   install:
     runtime-versions:
-      nodejs: 14
+      nodejs: 10
     commands:
       - npm install -g jest
 
