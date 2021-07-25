@@ -96,7 +96,7 @@ class SocialPostDao implements IPostDao {
     const stamp = Number(Date.now());
     const params = {
       TableName: TABLE_NAME,
-      IndexName: "main_post-post_date_time-index",
+      IndexName: "main_post-sort_date_time-index",
       KeyConditionExpression: "#mainpost = :mainpost AND #date < :date",
       ExpressionAttributeNames:{
         "#mainpost": "main_post",
