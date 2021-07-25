@@ -97,14 +97,18 @@ class SocialPostDao implements IPostDao {
     const params = {
       TableName: TABLE_NAME,
       IndexName: "main_post-post_date_time-index",
-      KeyConditionExpression: "main_post = :mainpost AND sort_date_time < :date",
+      KeyConditionExpression: "#mainpost = :mainpost AND #date < :date",
+      ExpressionAttributeNames:{
+        "#mainpost": "main_post",
+        "#date": "sort_date_time"
+      },
       ExpressionAttributeValues: {
         ":mainpost": 1,
         ":date": stamp
       },
       ScanIndexForward: false
     };
-    const db = dynamoClient.scan(params).promise();
+    const db = dynamoClient.query(params).promise();
     return db.then();
   }
 
