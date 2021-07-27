@@ -46,8 +46,4 @@ describe("[MESSAGES_DAO]", () => {
     expect(await dao.getMessages(msgObj1)).toBeDefined();
   });
 
-  // it("[Test 6.0] - deleteMessageGroup and getMessages", async () => {
-  //   await dao.deleteMessageGroup(msgObj1);
-  //   expect(await dao.getMessages(msgObj1)).toBeDefined();
-  // });
 });
