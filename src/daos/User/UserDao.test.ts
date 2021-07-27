@@ -5,19 +5,6 @@
 import { userObj1 } from "../../pre-start/testObjects";
 import UserDao from "./UserDao";
 
-import path from "path";
-import dotenv from "dotenv";
-
-(() => {
-  // Set the env file
-  const result2 = dotenv.config({
-    path: "../../pre-start/env/test.env"  //path.join(__dirname, `env/test.env`),
-  });
-  if (result2.error) {
-    throw result2.error;
-  }
-})();
-
 //configure jest settings
 const DEFAULT_JEST_TIMEOUT = 1000;
 jest.setTimeout(5 * DEFAULT_JEST_TIMEOUT);
