@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable max-len */
-// import "../../pre-start/testEnviroment";
 import { msgObj1 } from "../../pre-start/testObjects";
 import MessagesDao from "./MessagesDao";
 
