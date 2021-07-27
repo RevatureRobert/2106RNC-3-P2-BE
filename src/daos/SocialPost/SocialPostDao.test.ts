@@ -1,9 +1,22 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable max-len */
-import "../../pre-start/testEnviroment";
+// import "../../pre-start/testEnviroment";
 import {postObj1, postObj2, postObj3} from "../../pre-start/testObjects"
 import SocialPostDao from "./SocialPostDao";
+
+import path from "path";
+import dotenv from "dotenv";
+
+(() => {
+  // Set the env file
+  const result2 = dotenv.config({
+    path: "../../pre-start/env/test.env"  //path.join(__dirname, `env/test.env`),
+  });
+  if (result2.error) {
+    throw result2.error;
+  }
+})();
 
 //configure basic jest settings
 const DEFAULT_JEST_TIMEOUT = 1000; //milliseconds
