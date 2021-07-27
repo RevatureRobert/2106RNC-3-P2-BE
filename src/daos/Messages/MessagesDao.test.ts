@@ -1,13 +1,27 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable max-len */
-import "../../pre-start/testEnviroment";
+// import "../../pre-start/testEnviroment";
 import { msgObj1 } from "../../pre-start/testObjects";
 import MessagesDao from "./MessagesDao";
+
+import path from "path";
+import dotenv from "dotenv";
+
+(() => {
+  // Set the env file
+  const result2 = dotenv.config({
+    path: path.join(__dirname, `env/test.env`),
+  });
+  if (result2.error) {
+    throw result2.error;
+  }
+})();
 
 //configure basic jest settings
 const DEFAULT_JEST_TIMEOUT = 1000; //milliseconds
 jest.setTimeout(1 * DEFAULT_JEST_TIMEOUT);
+
 
 // create instance of social post dao
 const dao = new MessagesDao();
