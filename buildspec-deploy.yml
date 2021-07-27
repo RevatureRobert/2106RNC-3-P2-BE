@@ -1,0 +1,14 @@
+version: 0.2
+
+env:
+  variables:
+    NODE_ENV: "development"
+
+phases:
+  build:
+    commands:
+      - npm run deploy:aws
+
+cache:
+  paths:
+    - './node_modules/**/*'
