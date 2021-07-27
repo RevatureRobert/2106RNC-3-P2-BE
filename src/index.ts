@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 // @ts-ignore
 import express, {NextFunction, Request, Response} from "serverless-express/express";
 // @ts-ignore
@@ -17,6 +18,12 @@ const {BAD_REQUEST} = StatusCodes;
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+
+app.use(function(req: Request, res: Response, next: NextFunction) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 
 // Add APIs
 app.use("/api", BaseRouter);
