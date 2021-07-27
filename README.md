@@ -1,4 +1,13 @@
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=RevatureRobert_2106RNC-3-P2-BE&metric=alert_status)](https://sonarcloud.io/dashboard?id=RevatureRobert_2106RNC-3-P2-BE)
+<p align="center">
+    <img src="https://sonarcloud.io/images/project_badges/sonarcloud-orange.svg">
+</p>
+<p align="center">
+    <img src= "https://sonarcloud.io/api/project_badges/measure?project=RevatureRobert_2106RNC-3-P2-BE&metric=alert_status"/>
+    <img src= "https://sonarcloud.io/api/project_badges/measure?project=RevatureRobert_2106RNC-3-P2-BE&metric=vulnerabilities"/>
+    <img src= "https://sonarcloud.io/api/project_badges/measure?project=RevatureRobert_2106RNC-3-P2-BE&metric=bugs"/>
+    <img src= "https://sonarcloud.io/api/project_badges/measure?project=RevatureRobert_2106RNC-3-P2-BE&metric=ncloc"/>
+    <img src= "https://sonarcloud.io/api/project_badges/measure?project=RevatureRobert_2106RNC-3-P2-BE&metric=security_rating"/>
+</p>
 
 # 2106RNC-3-P2-BE
 
@@ -18,14 +27,15 @@ Rewrite your Project 1 using the following technologies:
 4. AWS Amplify/SAM/CFN/Serverless-FW as backend build tool
 5. Expo as React Native build tool
 
-- [API Documentation](https://documenter.getpostman.com/view/16168422/TzsYM8oz)
+-   [API Documentation](https://documenter.getpostman.com/view/16168422/TzsYM8oz)
+
 ### Requirements
 
 ---
 
 **Backend**
 
-1. Application must be serverless, implementing AWS Services. 
+1. Application must be serverless, implementing AWS Services.
 2. All code must be written in Typescript
 3. Work must be done with an Agile/Scrum workflow. Implement burn down charts, assign a Scrum Master, hold daily stand ups, and work in 1 week sprints.
 4. 100% Code coverage on Lambda functions.
