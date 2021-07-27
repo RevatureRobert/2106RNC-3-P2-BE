@@ -212,12 +212,12 @@ describe("[ROUTES TEST]- DELETE OPERATORS", () => {
     expect(res.statusCode).toEqual(400);
   });
 
-  it("[Test 2.0] - Delete a message group", async () => {
-    const res = await supertest(app)
-      .delete("/api/home/messages/delete/group")
-      .send(msgBody1);
-    expect(res.statusCode).toEqual(200);
-  });
+  // it("[Test 2.0] - Delete a message group", async () => {
+  //   const res = await supertest(app)
+  //     .delete("/api/home/messages/delete/group")
+  //     .send(msgBody1);
+  //   expect(res.statusCode).toEqual(200);
+  // });
 
   it("[Test 2.1] - Delete a message group failure", async () => {
     const res = await supertest(app)

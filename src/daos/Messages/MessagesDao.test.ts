@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable max-len */
-import "../../pre-start/testenviroment";
+import "../../pre-start/testEnviroment";
 import { msgObj1 } from "../../pre-start/testObjects";
 import MessagesDao from "./MessagesDao";
 
@@ -46,8 +46,8 @@ describe("[MESSAGES_DAO]", () => {
     expect(await dao.getMessages(msgObj1)).toBeDefined();
   });
 
-  it("[Test 6.0] - deleteMessageGroup and getMessages", async () => {
-    await dao.deleteMessageGroup(msgObj1);
-    expect(await dao.getMessages(msgObj1)).toBeDefined();
-  });
+  // it("[Test 6.0] - deleteMessageGroup and getMessages", async () => {
+  //   await dao.deleteMessageGroup(msgObj1);
+  //   expect(await dao.getMessages(msgObj1)).toBeDefined();
+  // });
 });

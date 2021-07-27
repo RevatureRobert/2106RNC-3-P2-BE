@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable max-len */
-import "../../pre-start/testenviroment";
+import "../../pre-start/testEnviroment";
 import {postObj1, postObj2, postObj3} from "../../pre-start/testObjects"
 import SocialPostDao from "./SocialPostDao";
 

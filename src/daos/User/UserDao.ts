@@ -4,7 +4,22 @@ import { IUser } from "../../entities/User";
 import logger from "../../shared/Logger";
 import AWS from "aws-sdk";
 
-const dynamoClient = new AWS.DynamoDB.DocumentClient();
+let config;
+let dynamoClient: any;
+  if (process.env.NODE_ENV === "test") {
+    config = {
+      convertEmptyValues: true,
+      ...(process.env.MOCK_DYNAMODB_ENDPOINT && {
+        endpoint: process.env.MOCK_DYNAMODB_ENDPOINT,
+        sslEnabled: false,
+        region: "local",
+      }),
+    };
+    // create an instance of AWS
+    dynamoClient = new AWS.DynamoDB.DocumentClient(config);
+  } else{
+    dynamoClient = new AWS.DynamoDB.DocumentClient();
+  }
 
 //table being accessed in database
 const TABLE_NAME = "profile";

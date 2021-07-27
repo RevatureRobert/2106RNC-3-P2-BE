@@ -5,24 +5,22 @@
 
 // jest.config.js
 
-const {defaults} = require("jest-config");
+const {
+    defaults
+} = require('jest-config');
 
 module.exports = {
-    // ...
-    moduleFileExtensions: [...defaults.moduleFileExtensions, "ts", "tsx"],
-    // ...
-    preset:
-        // "jest-dynalite",
-        // "@shelf/jest-dynamodb",
-        "ts-jest",
-
-    testEnvironment: "jest-dynalite/environment",
+    collectCoverageFrom: [
+        "./src/**/*.{ts, tsx}",
+    ],
+    moduleFileExtensions: [...defaults.moduleFileExtensions, 'ts', 'tsx'],
+    preset: "jest-dynalite",
+    roots: ["<rootDir>"],
+    testMatch: [
+        "**/__tests__/**/*.+(ts|tsx|js)",
+        "**/?(*.)+(spec|test).+(ts|tsx|js)"
+    ],
     transform: {
-        "^.+\\.tsx?$": "babel-jest"
+        "^.+\\.(ts|tsx)$": "ts-jest"
     },
-    setupFilesAfterEnv: [
-        "jest-dynalite/setupTables",
-        // Optional (but recommended)
-        "jest-dynalite/clearAfterEach"
-    ]
-};
+}
