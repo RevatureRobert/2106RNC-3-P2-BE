@@ -13,7 +13,7 @@
 
 ## Project 2 
 
-## Social Media Rewrite
+## Social Media Rewrite 
 
 ### Introduction
 
