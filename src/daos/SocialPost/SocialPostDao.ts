@@ -141,13 +141,15 @@ class SocialPostDao implements IPostDao {
     logger.info("Using route addMainPost in DAO");
     const id = await createHash(postInfo.userName + String(Date.now()));
     const stamp = Number(Date.now());
+    const aghhh = new Date();
+    const date = aghhh.toDateString();
     const params = {
       TableName: TABLE_NAME,
       Item: {
         username: postInfo.userName,
         post_id: id,
         parent_post_id: id,
-        post_date_time: Date().toString(),
+        post_date_time: date,
         sort_date_time: stamp,
         post_text: postInfo.postText,
         main_post: 1,
@@ -166,13 +168,15 @@ class SocialPostDao implements IPostDao {
     logger.info("Using route addComment in DAO");
     const id = await createHash(postInfo.userName + String(Date.now()));
     const stamp = Number(Date.now());
+    const aghhh = new Date();
+    const date = aghhh.toDateString();
     const params = {
       TableName: TABLE_NAME,
       Item: {
         username: postInfo.userName,
         post_id: id,
         parent_post_id: postInfo.parentPostId,
-        post_date_time: Date().toString(),
+        post_date_time: date,
         sort_date_time: stamp,
         post_text: postInfo.postText,
         main_post: 0,
@@ -200,13 +204,15 @@ class SocialPostDao implements IPostDao {
       mp = 0;
     }
     const stamp = Number(Date.now());
+    const aghhh = new Date();
+    const date = aghhh.toDateString();
     const params = {
       TableName: TABLE_NAME,
       Item: {
         username: postInfo.userName,
         post_id: postInfo.postId,
         parent_post_id: postInfo.parentPostId,
-        post_date_time: Date().toString(),
+        post_date_time: date,
         sort_date_time: stamp,
         post_text: postInfo.postText,
         main_post: mp,
