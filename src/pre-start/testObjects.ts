@@ -56,8 +56,7 @@ export const userObj1 = {
   userName: "bWayne@gotham.org",
   firstName: "Bruce",
   lastName: "Wayne",
-  phoneNumber: "546-456-8956",
-  publicName: "DarkKnight",
+  birthday: "19 Nov 1992"
 }
 
 export const msgObj1 = {
@@ -106,7 +105,6 @@ export const usersBody1 = {
     "userName": "matthewterry68.mt@gmail.com",
     "firstName": "matthew",
     "lastName": "terry",
-    "phoneNumber": "555-555-5555",
-    "publicName": "mat2718",
+    "birthday": "19 Nov 1992"
   }
 }
