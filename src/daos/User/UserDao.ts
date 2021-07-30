@@ -93,8 +93,7 @@ class UserDao implements IUserDao {
         username: user.userName,
         first_name: user.firstName,
         last_name: user.lastName,
-        phone_number: user.phoneNumber,
-        public_name: user.publicName
+        birthday: user.birthday
       },
     };
     await dynamoClient.put(params).promise();
@@ -117,8 +116,7 @@ class UserDao implements IUserDao {
         username: user.userName,
         first_name: user.firstName,
         last_name: user.lastName,
-        phone_number: user.phoneNumber,
-        public_name: user.publicName
+        birthday: user.birthday
       },
     };
     await dynamoClient.put(params).promise();
