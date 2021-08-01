@@ -121,7 +121,7 @@ class UserDao implements IUserDao {
         last_name: user.lastName,
         birthday: user.birthday,
         phone_number: user.phone,
-        preferred: user.preferred,
+        public_name: user.preferred,
         profile: user.profile
       },
     };
