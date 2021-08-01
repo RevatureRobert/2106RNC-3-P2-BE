@@ -57,7 +57,7 @@ export const userObj1 = {
   firstName: "Bruce",
   lastName: "Wayne",
   birthday: "19 Nov 1992",
-  phone_number: "555-555-5555",
+  phone: "555-555-5555",
   preferred: "mat2718",
   profile: "im a pretty pony"
 }
@@ -109,7 +109,7 @@ export const usersBody1 = {
     "firstName": "matthew",
     "lastName": "terry",
     "birthday": "19 Nov 1992",
-    "phone_number": "555-555-5555",
+    "phone": "555-555-5555",
     "preferred": "mat2718",
     "profile": "im a pretty pony"
   }
