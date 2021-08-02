@@ -21,7 +21,7 @@ const userDao = new UserDao();
 describe("[USER_DAO]", () => {
   it("[Test 1.0] - addUser and getGetUser", async () => {
     await userDao.addUser(userObj1);
-    expect(await userDao.getOne(userObj1)).toBeDefined();
+    expect(await userDao.getOne("bWayne@gotham.org")).toBeDefined();
   });
 
   it("[Test 2.0] - getAll", async () => {
@@ -30,11 +30,11 @@ describe("[USER_DAO]", () => {
 
   it("[Test 3.0] - updateUser", async () => {
     await userDao.updateUser(userObj1);
-    expect(await userDao.getOne(userObj1)).toBeDefined();
+    expect(await userDao.getOne("bWayne@gotham.org")).toBeDefined();
   });
 
   it("[Test 4.0] - deleteUser", async () => {
     await userDao.deleteUser(userObj1);
-    expect(await userDao.getOne(userObj1)).toBeDefined();
+    expect(await userDao.getOne("bWayne@gotham.org")).toBeDefined();
   });
 });

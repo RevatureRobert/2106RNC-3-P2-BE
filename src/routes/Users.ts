@@ -30,13 +30,13 @@ export async function getAllUsers(req: Request, res: Response) {
  * @returns
  */
  export async function getOneUser(req: Request, res: Response) {
-  const { user } = req.body;
-  if (!user) {
+  const { username } = req.params;
+  if (!username) {
     return res.status(BAD_REQUEST).json({
       error: paramMissingError,
     });
   } else {
-    const userData = await userDao.getOne(user);
+    const userData = await userDao.getOne(username);
     return res.status(OK).json(userData);
   }
 }

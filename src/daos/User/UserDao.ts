@@ -26,7 +26,7 @@ const TABLE_NAME = "profile";
 
 // interface used for items below
 export interface IUserDao {
-  getOne: (user: IUser) => Promise<IUser | null>;
+  getOne: (username: string) => Promise<IUser | null>;
   getAll: (user: IUser) => Promise<IUser[]>;
   addUser: (user: IUser) => Promise<void>;
   updateUser: (user: IUser) => Promise<void>;
@@ -47,7 +47,7 @@ class UserDao implements IUserDao {
    * Returns a user by the username
    * @param username
    */
-  public getOne(user: IUser): Promise<IUser | null> {
+  public getOne(username: string): Promise<IUser | null> {
     logger.info("Using getOne route in users DAO");
     const params = {
       TableName: TABLE_NAME,
@@ -56,7 +56,7 @@ class UserDao implements IUserDao {
         "#username": "username",
       },
       ExpressionAttributeValues: {
-        ":username": user.userName,
+        ":username": username,
       },
     };
     const db = dynamoClient.scan(params).promise();

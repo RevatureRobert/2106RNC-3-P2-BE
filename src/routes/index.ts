@@ -34,7 +34,7 @@ import {
 //************************************************************************************************
 const userRouter = Router();
 userRouter.get("/all", getAllUsers);
-userRouter.get("/getuser", getOneUser);
+userRouter.get("/getuser/:username", getOneUser);
 userRouter.post("/add", addOneUser);
 userRouter.put("/update", updateOneUser);
 userRouter.delete("/delete", deleteOneUser);
