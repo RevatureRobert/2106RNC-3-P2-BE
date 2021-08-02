@@ -120,7 +120,7 @@ export async function addLikeDislike(req: Request, res: Response) {
       error: paramMissingError,
     });
   }
-  await socialPostDao.addMainPost(socialPosts);
+  await socialPostDao.addLikeDislike(socialPosts);
   return res.status(CREATED).end();
 }
 
