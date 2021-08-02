@@ -4,7 +4,7 @@ import { IMessage } from "../../entities/Messages";
 
 declare module 'express' {
     export interface Request  {
-        data: {
+        body: {
             user: IUser,
             socialPosts: IPost,
             messages: IMessage,
