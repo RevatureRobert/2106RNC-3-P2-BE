@@ -58,13 +58,8 @@ describe("[ROUTES TEST]- GET OPERATORS", () => {
   });
 
   it("[Test 6.0] - Get one user", async () => {
-    const res = await supertest(app).get("/api/home/getuser").send(usersBody1);
+    const res = await supertest(app).get("/api/home/getuser/matthewterry68.mt").send();
     expect(res.statusCode).toEqual(200);
-  });
-
-  it("[Test 6.1] - Get one user failure", async () => {
-    const res = await supertest(app).get("/api/home/getuser").send();
-    expect(res.statusCode).toEqual(400);
   });
 
   it("[Test 7.0] - Get message groups", async () => {
